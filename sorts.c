@@ -22,11 +22,47 @@ void printArray(int arr[], int size) {
     printf("\n");
 }
 
+void selectionSort(int arr[], int n) {
+    int i, j, min_idx, temp;
+    for (i = 0; i < n-1; i++) {
+        min_idx = i;
+        for (j = i+1; j < n; j++) {
+            if (arr[j] < arr[min_idx]) {
+                min_idx = j;
+            }
+        }
+        // Swap the found minimum element with the first element
+        temp = arr[min_idx];
+        arr[min_idx] = arr[i];
+        arr[i] = temp;
+    }
+}
+
 int main() {
     int arr[] = {64, 34, 25, 12, 22, 11, 90};
     int n = sizeof(arr)/sizeof(arr[0]);
-    bubbleSort(arr, n);
-    printf("Sorted array: \n");
+    int choice;
+
+    printf("Choose sorting algorithm:\n");
+    printf("1. Bubble Sort\n");
+    printf("2. Selection Sort\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    switch (choice) {
+        case 1:
+            bubbleSort(arr, n);
+            printf("Sorted array using Bubble Sort: \n");
+            break;
+        case 2:
+            selectionSort(arr, n);
+            printf("Sorted array using Selection Sort: \n");
+            break;
+        default:
+            printf("Invalid choice\n");
+            return 1;
+    }
+
     printArray(arr, n);
     return 0;
 }
