@@ -81,7 +81,7 @@ int main() {
             printf("Invalid choice\n");
             return 1;
     }
-
+    //prints the sorted array
     printArray(arr, n);
     return 0;
 }
